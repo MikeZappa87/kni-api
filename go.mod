@@ -1,4 +1,4 @@
-module github.com/mikezappa87/kni-api
+module github.com/MikeZappa87/kni-api
 
 go 1.21.5
 
