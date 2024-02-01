@@ -5,6 +5,7 @@ option go_package = "pkg/apis/runtime/beta";
 
 service KNI {
     rpc CreateNetwork(CreateNetworkRequest) returns (CreateNetworkResponse) {} //MVP
+    rpc DeleteNetwork(DeleteNetworkRequest) returns (DeleteNetworkResponse) {} //MVP
     rpc AttachNetwork(AttachNetworkRequest) returns (AttachNetworkResponse) {} //MVP
     rpc DetachNetwork(DetachNetworkRequest) returns (DetachNetworkResponse) {} //MVP
     rpc QueryPodNetwork(QueryPodNetworkRequest) returns (QueryPodNetworkResponse) {} //MVP
@@ -13,15 +14,25 @@ service KNI {
 }
 
 message CreateNetworkRequest {
-    string netns_path_prefix = 1;
-    map<string,string> labels = 2;
-    map<string,string> annotations = 3;
-    map<string,string> extradata = 4;
+    string name = 1;
+    string uid = 2;
+    string netns_path_prefix = 3;
+    map<string,string> labels = 4;
+    map<string,string> annotations = 5;
+    map<string,string> extradata = 6;
 }
 
 message CreateNetworkResponse {
     string netns_path = 1;
     map<string,string> extradata = 2;
+}
+
+message DeleteNetworkRequest {
+    map<string,string> extradata = 1;
+}
+
+message DeleteNetworkResponse {
+
 }
 
 message AttachNetworkRequest {
