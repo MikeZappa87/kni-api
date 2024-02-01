@@ -30,7 +30,10 @@ message CreateNetworkResponse {
 
 message DeleteNetworkRequest {
     string id = 1;
-    map<string,string> extradata = 2;
+    string name = 2;
+    string namespace = 3;
+    string netns_path = 4;
+    map<string,string> extradata = 5;
 }
 
 message DeleteNetworkResponse {
