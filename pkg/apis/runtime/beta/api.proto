@@ -16,10 +16,11 @@ service KNI {
 message CreateNetworkRequest {
     string name = 1;
     string uid = 2;
-    string netns_path_prefix = 3;
-    map<string,string> labels = 4;
-    map<string,string> annotations = 5;
-    map<string,string> extradata = 6;
+    string namespace = 3;
+    string netns_path_prefix = 4;
+    map<string,string> labels = 5;
+    map<string,string> annotations = 6;
+    map<string,string> extradata = 7;
 }
 
 message CreateNetworkResponse {
