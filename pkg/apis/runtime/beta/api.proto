@@ -28,7 +28,8 @@ message CreateNetworkResponse {
 }
 
 message DeleteNetworkRequest {
-    map<string,string> extradata = 1;
+    string id = 1;
+    map<string,string> extradata = 2;
 }
 
 message DeleteNetworkResponse {
