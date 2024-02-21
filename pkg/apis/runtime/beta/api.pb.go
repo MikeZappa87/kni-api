@@ -69,7 +69,581 @@ func (Protocol) EnumDescriptor() ([]byte, []int) {
 	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{0}
 }
 
-type CreateNetworkRequest struct {
+type PostAttachInterfaceRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name          string               `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Uid           string               `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	Namespace     string               `protobuf:"bytes,3,opt,name=namespace,proto3" json:"namespace,omitempty"`
+	Labels        map[string]string    `protobuf:"bytes,5,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Annotations   map[string]string    `protobuf:"bytes,6,rep,name=annotations,proto3" json:"annotations,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Extradata     map[string]string    `protobuf:"bytes,7,rep,name=extradata,proto3" json:"extradata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	PrevIpconfigs map[string]*IPConfig `protobuf:"bytes,8,rep,name=prev_ipconfigs,json=prevIpconfigs,proto3" json:"prev_ipconfigs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	NetnsPath     string               `protobuf:"bytes,9,opt,name=netns_path,json=netnsPath,proto3" json:"netns_path,omitempty"`
+}
+
+func (x *PostAttachInterfaceRequest) Reset() {
+	*x = PostAttachInterfaceRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PostAttachInterfaceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PostAttachInterfaceRequest) ProtoMessage() {}
+
+func (x *PostAttachInterfaceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PostAttachInterfaceRequest.ProtoReflect.Descriptor instead.
+func (*PostAttachInterfaceRequest) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *PostAttachInterfaceRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *PostAttachInterfaceRequest) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *PostAttachInterfaceRequest) GetNamespace() string {
+	if x != nil {
+		return x.Namespace
+	}
+	return ""
+}
+
+func (x *PostAttachInterfaceRequest) GetLabels() map[string]string {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
+}
+
+func (x *PostAttachInterfaceRequest) GetAnnotations() map[string]string {
+	if x != nil {
+		return x.Annotations
+	}
+	return nil
+}
+
+func (x *PostAttachInterfaceRequest) GetExtradata() map[string]string {
+	if x != nil {
+		return x.Extradata
+	}
+	return nil
+}
+
+func (x *PostAttachInterfaceRequest) GetPrevIpconfigs() map[string]*IPConfig {
+	if x != nil {
+		return x.PrevIpconfigs
+	}
+	return nil
+}
+
+func (x *PostAttachInterfaceRequest) GetNetnsPath() string {
+	if x != nil {
+		return x.NetnsPath
+	}
+	return ""
+}
+
+type ListPodsRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ListPodsRequest) Reset() {
+	*x = ListPodsRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListPodsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPodsRequest) ProtoMessage() {}
+
+func (x *ListPodsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPodsRequest.ProtoReflect.Descriptor instead.
+func (*ListPodsRequest) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{1}
+}
+
+type Pod struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name        string               `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Uid         string               `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	Namespace   string               `protobuf:"bytes,3,opt,name=namespace,proto3" json:"namespace,omitempty"`
+	Labels      map[string]string    `protobuf:"bytes,5,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Annotations map[string]string    `protobuf:"bytes,6,rep,name=annotations,proto3" json:"annotations,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Extradata   map[string]string    `protobuf:"bytes,7,rep,name=extradata,proto3" json:"extradata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Ipconfigs   map[string]*IPConfig `protobuf:"bytes,8,rep,name=ipconfigs,proto3" json:"ipconfigs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	NetnsPath   string               `protobuf:"bytes,9,opt,name=netns_path,json=netnsPath,proto3" json:"netns_path,omitempty"`
+}
+
+func (x *Pod) Reset() {
+	*x = Pod{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Pod) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Pod) ProtoMessage() {}
+
+func (x *Pod) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Pod.ProtoReflect.Descriptor instead.
+func (*Pod) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Pod) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Pod) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *Pod) GetNamespace() string {
+	if x != nil {
+		return x.Namespace
+	}
+	return ""
+}
+
+func (x *Pod) GetLabels() map[string]string {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
+}
+
+func (x *Pod) GetAnnotations() map[string]string {
+	if x != nil {
+		return x.Annotations
+	}
+	return nil
+}
+
+func (x *Pod) GetExtradata() map[string]string {
+	if x != nil {
+		return x.Extradata
+	}
+	return nil
+}
+
+func (x *Pod) GetIpconfigs() map[string]*IPConfig {
+	if x != nil {
+		return x.Ipconfigs
+	}
+	return nil
+}
+
+func (x *Pod) GetNetnsPath() string {
+	if x != nil {
+		return x.NetnsPath
+	}
+	return ""
+}
+
+type ListPodsResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Pods map[string]*Pod `protobuf:"bytes,1,rep,name=pods,proto3" json:"pods,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+}
+
+func (x *ListPodsResponse) Reset() {
+	*x = ListPodsResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListPodsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPodsResponse) ProtoMessage() {}
+
+func (x *ListPodsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPodsResponse.ProtoReflect.Descriptor instead.
+func (*ListPodsResponse) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ListPodsResponse) GetPods() map[string]*Pod {
+	if x != nil {
+		return x.Pods
+	}
+	return nil
+}
+
+type ListPluginsRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ListPluginsRequest) Reset() {
+	*x = ListPluginsRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListPluginsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPluginsRequest) ProtoMessage() {}
+
+func (x *ListPluginsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPluginsRequest.ProtoReflect.Descriptor instead.
+func (*ListPluginsRequest) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{4}
+}
+
+type ListPluginsResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ListPluginsResponse) Reset() {
+	*x = ListPluginsResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListPluginsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPluginsResponse) ProtoMessage() {}
+
+func (x *ListPluginsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPluginsResponse.ProtoReflect.Descriptor instead.
+func (*ListPluginsResponse) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{5}
+}
+
+type RegisterPluginRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *RegisterPluginRequest) Reset() {
+	*x = RegisterPluginRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RegisterPluginRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterPluginRequest) ProtoMessage() {}
+
+func (x *RegisterPluginRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterPluginRequest.ProtoReflect.Descriptor instead.
+func (*RegisterPluginRequest) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{6}
+}
+
+type RegisterPluginResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *RegisterPluginResponse) Reset() {
+	*x = RegisterPluginResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RegisterPluginResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterPluginResponse) ProtoMessage() {}
+
+func (x *RegisterPluginResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterPluginResponse.ProtoReflect.Descriptor instead.
+func (*RegisterPluginResponse) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{7}
+}
+
+type DeregisterPluginRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *DeregisterPluginRequest) Reset() {
+	*x = DeregisterPluginRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeregisterPluginRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeregisterPluginRequest) ProtoMessage() {}
+
+func (x *DeregisterPluginRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeregisterPluginRequest.ProtoReflect.Descriptor instead.
+func (*DeregisterPluginRequest) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{8}
+}
+
+type DeregisterPluginResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *DeregisterPluginResponse) Reset() {
+	*x = DeregisterPluginResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeregisterPluginResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeregisterPluginResponse) ProtoMessage() {}
+
+func (x *DeregisterPluginResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeregisterPluginResponse.ProtoReflect.Descriptor instead.
+func (*DeregisterPluginResponse) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{9}
+}
+
+type PostAttachInterfaceResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Ipconfigs map[string]*IPConfig `protobuf:"bytes,1,rep,name=ipconfigs,proto3" json:"ipconfigs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Extradata map[string]string    `protobuf:"bytes,2,rep,name=extradata,proto3" json:"extradata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+}
+
+func (x *PostAttachInterfaceResponse) Reset() {
+	*x = PostAttachInterfaceResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PostAttachInterfaceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PostAttachInterfaceResponse) ProtoMessage() {}
+
+func (x *PostAttachInterfaceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PostAttachInterfaceResponse.ProtoReflect.Descriptor instead.
+func (*PostAttachInterfaceResponse) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *PostAttachInterfaceResponse) GetIpconfigs() map[string]*IPConfig {
+	if x != nil {
+		return x.Ipconfigs
+	}
+	return nil
+}
+
+func (x *PostAttachInterfaceResponse) GetExtradata() map[string]string {
+	if x != nil {
+		return x.Extradata
+	}
+	return nil
+}
+
+type CreateIsolationDomainRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -83,23 +657,23 @@ type CreateNetworkRequest struct {
 	Extradata       map[string]string `protobuf:"bytes,7,rep,name=extradata,proto3" json:"extradata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (x *CreateNetworkRequest) Reset() {
-	*x = CreateNetworkRequest{}
+func (x *CreateIsolationDomainRequest) Reset() {
+	*x = CreateIsolationDomainRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[0]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *CreateNetworkRequest) String() string {
+func (x *CreateIsolationDomainRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateNetworkRequest) ProtoMessage() {}
+func (*CreateIsolationDomainRequest) ProtoMessage() {}
 
-func (x *CreateNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[0]
+func (x *CreateIsolationDomainRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -110,61 +684,61 @@ func (x *CreateNetworkRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateNetworkRequest.ProtoReflect.Descriptor instead.
-func (*CreateNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use CreateIsolationDomainRequest.ProtoReflect.Descriptor instead.
+func (*CreateIsolationDomainRequest) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *CreateNetworkRequest) GetName() string {
+func (x *CreateIsolationDomainRequest) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *CreateNetworkRequest) GetUid() string {
+func (x *CreateIsolationDomainRequest) GetUid() string {
 	if x != nil {
 		return x.Uid
 	}
 	return ""
 }
 
-func (x *CreateNetworkRequest) GetNamespace() string {
+func (x *CreateIsolationDomainRequest) GetNamespace() string {
 	if x != nil {
 		return x.Namespace
 	}
 	return ""
 }
 
-func (x *CreateNetworkRequest) GetNetnsPathPrefix() string {
+func (x *CreateIsolationDomainRequest) GetNetnsPathPrefix() string {
 	if x != nil {
 		return x.NetnsPathPrefix
 	}
 	return ""
 }
 
-func (x *CreateNetworkRequest) GetLabels() map[string]string {
+func (x *CreateIsolationDomainRequest) GetLabels() map[string]string {
 	if x != nil {
 		return x.Labels
 	}
 	return nil
 }
 
-func (x *CreateNetworkRequest) GetAnnotations() map[string]string {
+func (x *CreateIsolationDomainRequest) GetAnnotations() map[string]string {
 	if x != nil {
 		return x.Annotations
 	}
 	return nil
 }
 
-func (x *CreateNetworkRequest) GetExtradata() map[string]string {
+func (x *CreateIsolationDomainRequest) GetExtradata() map[string]string {
 	if x != nil {
 		return x.Extradata
 	}
 	return nil
 }
 
-type CreateNetworkResponse struct {
+type CreateIsolationDomainResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -173,23 +747,23 @@ type CreateNetworkResponse struct {
 	Extradata map[string]string `protobuf:"bytes,2,rep,name=extradata,proto3" json:"extradata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (x *CreateNetworkResponse) Reset() {
-	*x = CreateNetworkResponse{}
+func (x *CreateIsolationDomainResponse) Reset() {
+	*x = CreateIsolationDomainResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[1]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *CreateNetworkResponse) String() string {
+func (x *CreateIsolationDomainResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateNetworkResponse) ProtoMessage() {}
+func (*CreateIsolationDomainResponse) ProtoMessage() {}
 
-func (x *CreateNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[1]
+func (x *CreateIsolationDomainResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -200,26 +774,26 @@ func (x *CreateNetworkResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateNetworkResponse.ProtoReflect.Descriptor instead.
-func (*CreateNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{1}
+// Deprecated: Use CreateIsolationDomainResponse.ProtoReflect.Descriptor instead.
+func (*CreateIsolationDomainResponse) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *CreateNetworkResponse) GetNetnsPath() string {
+func (x *CreateIsolationDomainResponse) GetNetnsPath() string {
 	if x != nil {
 		return x.NetnsPath
 	}
 	return ""
 }
 
-func (x *CreateNetworkResponse) GetExtradata() map[string]string {
+func (x *CreateIsolationDomainResponse) GetExtradata() map[string]string {
 	if x != nil {
 		return x.Extradata
 	}
 	return nil
 }
 
-type DeleteNetworkRequest struct {
+type DeleteIsolationDomainRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -231,23 +805,23 @@ type DeleteNetworkRequest struct {
 	Extradata map[string]string `protobuf:"bytes,5,rep,name=extradata,proto3" json:"extradata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (x *DeleteNetworkRequest) Reset() {
-	*x = DeleteNetworkRequest{}
+func (x *DeleteIsolationDomainRequest) Reset() {
+	*x = DeleteIsolationDomainRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[2]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *DeleteNetworkRequest) String() string {
+func (x *DeleteIsolationDomainRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteNetworkRequest) ProtoMessage() {}
+func (*DeleteIsolationDomainRequest) ProtoMessage() {}
 
-func (x *DeleteNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[2]
+func (x *DeleteIsolationDomainRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -258,69 +832,69 @@ func (x *DeleteNetworkRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteNetworkRequest.ProtoReflect.Descriptor instead.
-func (*DeleteNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{2}
+// Deprecated: Use DeleteIsolationDomainRequest.ProtoReflect.Descriptor instead.
+func (*DeleteIsolationDomainRequest) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *DeleteNetworkRequest) GetId() string {
+func (x *DeleteIsolationDomainRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-func (x *DeleteNetworkRequest) GetName() string {
+func (x *DeleteIsolationDomainRequest) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *DeleteNetworkRequest) GetNamespace() string {
+func (x *DeleteIsolationDomainRequest) GetNamespace() string {
 	if x != nil {
 		return x.Namespace
 	}
 	return ""
 }
 
-func (x *DeleteNetworkRequest) GetNetnsPath() string {
+func (x *DeleteIsolationDomainRequest) GetNetnsPath() string {
 	if x != nil {
 		return x.NetnsPath
 	}
 	return ""
 }
 
-func (x *DeleteNetworkRequest) GetExtradata() map[string]string {
+func (x *DeleteIsolationDomainRequest) GetExtradata() map[string]string {
 	if x != nil {
 		return x.Extradata
 	}
 	return nil
 }
 
-type DeleteNetworkResponse struct {
+type DeleteIsolationDomainResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *DeleteNetworkResponse) Reset() {
-	*x = DeleteNetworkResponse{}
+func (x *DeleteIsolationDomainResponse) Reset() {
+	*x = DeleteIsolationDomainResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[3]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *DeleteNetworkResponse) String() string {
+func (x *DeleteIsolationDomainResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteNetworkResponse) ProtoMessage() {}
+func (*DeleteIsolationDomainResponse) ProtoMessage() {}
 
-func (x *DeleteNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[3]
+func (x *DeleteIsolationDomainResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -331,9 +905,9 @@ func (x *DeleteNetworkResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteNetworkResponse.ProtoReflect.Descriptor instead.
-func (*DeleteNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{3}
+// Deprecated: Use DeleteIsolationDomainResponse.ProtoReflect.Descriptor instead.
+func (*DeleteIsolationDomainResponse) Descriptor() ([]byte, []int) {
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{14}
 }
 
 type AttachInterfaceRequest struct {
@@ -355,7 +929,7 @@ type AttachInterfaceRequest struct {
 func (x *AttachInterfaceRequest) Reset() {
 	*x = AttachInterfaceRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[4]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -368,7 +942,7 @@ func (x *AttachInterfaceRequest) String() string {
 func (*AttachInterfaceRequest) ProtoMessage() {}
 
 func (x *AttachInterfaceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[4]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -381,7 +955,7 @@ func (x *AttachInterfaceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttachInterfaceRequest.ProtoReflect.Descriptor instead.
 func (*AttachInterfaceRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{4}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *AttachInterfaceRequest) GetName() string {
@@ -459,7 +1033,7 @@ type AttachInterfaceResponse struct {
 func (x *AttachInterfaceResponse) Reset() {
 	*x = AttachInterfaceResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[5]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -472,7 +1046,7 @@ func (x *AttachInterfaceResponse) String() string {
 func (*AttachInterfaceResponse) ProtoMessage() {}
 
 func (x *AttachInterfaceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[5]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -485,7 +1059,7 @@ func (x *AttachInterfaceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttachInterfaceResponse.ProtoReflect.Descriptor instead.
 func (*AttachInterfaceResponse) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{5}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *AttachInterfaceResponse) GetIpconfigs() map[string]*IPConfig {
@@ -519,7 +1093,7 @@ type DetachInterfaceRequest struct {
 func (x *DetachInterfaceRequest) Reset() {
 	*x = DetachInterfaceRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[6]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -532,7 +1106,7 @@ func (x *DetachInterfaceRequest) String() string {
 func (*DetachInterfaceRequest) ProtoMessage() {}
 
 func (x *DetachInterfaceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[6]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -545,7 +1119,7 @@ func (x *DetachInterfaceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DetachInterfaceRequest.ProtoReflect.Descriptor instead.
 func (*DetachInterfaceRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{6}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *DetachInterfaceRequest) GetName() string {
@@ -606,7 +1180,7 @@ type DetachInterfaceResponse struct {
 func (x *DetachInterfaceResponse) Reset() {
 	*x = DetachInterfaceResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[7]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -619,7 +1193,7 @@ func (x *DetachInterfaceResponse) String() string {
 func (*DetachInterfaceResponse) ProtoMessage() {}
 
 func (x *DetachInterfaceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[7]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -632,7 +1206,7 @@ func (x *DetachInterfaceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DetachInterfaceResponse.ProtoReflect.Descriptor instead.
 func (*DetachInterfaceResponse) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{7}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{18}
 }
 
 type IPConfig struct {
@@ -648,7 +1222,7 @@ type IPConfig struct {
 func (x *IPConfig) Reset() {
 	*x = IPConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[8]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -661,7 +1235,7 @@ func (x *IPConfig) String() string {
 func (*IPConfig) ProtoMessage() {}
 
 func (x *IPConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[8]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -674,7 +1248,7 @@ func (x *IPConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IPConfig.ProtoReflect.Descriptor instead.
 func (*IPConfig) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{8}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *IPConfig) GetIp() []string {
@@ -711,7 +1285,7 @@ type Network struct {
 func (x *Network) Reset() {
 	*x = Network{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[9]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -724,7 +1298,7 @@ func (x *Network) String() string {
 func (*Network) ProtoMessage() {}
 
 func (x *Network) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[9]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -737,7 +1311,7 @@ func (x *Network) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Network.ProtoReflect.Descriptor instead.
 func (*Network) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{9}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *Network) GetName() string {
@@ -774,7 +1348,7 @@ type Isolation struct {
 func (x *Isolation) Reset() {
 	*x = Isolation{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[10]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -787,7 +1361,7 @@ func (x *Isolation) String() string {
 func (*Isolation) ProtoMessage() {}
 
 func (x *Isolation) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[10]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -800,7 +1374,7 @@ func (x *Isolation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Isolation.ProtoReflect.Descriptor instead.
 func (*Isolation) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{10}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *Isolation) GetPath() string {
@@ -842,7 +1416,7 @@ type DNSConfig struct {
 func (x *DNSConfig) Reset() {
 	*x = DNSConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[11]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -855,7 +1429,7 @@ func (x *DNSConfig) String() string {
 func (*DNSConfig) ProtoMessage() {}
 
 func (x *DNSConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[11]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -868,7 +1442,7 @@ func (x *DNSConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DNSConfig.ProtoReflect.Descriptor instead.
 func (*DNSConfig) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{11}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *DNSConfig) GetServers() []string {
@@ -911,7 +1485,7 @@ type PortMapping struct {
 func (x *PortMapping) Reset() {
 	*x = PortMapping{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[12]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -924,7 +1498,7 @@ func (x *PortMapping) String() string {
 func (*PortMapping) ProtoMessage() {}
 
 func (x *PortMapping) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[12]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -937,7 +1511,7 @@ func (x *PortMapping) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PortMapping.ProtoReflect.Descriptor instead.
 func (*PortMapping) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{12}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *PortMapping) GetProtocol() Protocol {
@@ -977,7 +1551,7 @@ type QueryNodeNetworksRequest struct {
 func (x *QueryNodeNetworksRequest) Reset() {
 	*x = QueryNodeNetworksRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[13]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -990,7 +1564,7 @@ func (x *QueryNodeNetworksRequest) String() string {
 func (*QueryNodeNetworksRequest) ProtoMessage() {}
 
 func (x *QueryNodeNetworksRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[13]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1003,7 +1577,7 @@ func (x *QueryNodeNetworksRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QueryNodeNetworksRequest.ProtoReflect.Descriptor instead.
 func (*QueryNodeNetworksRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{13}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{24}
 }
 
 type QueryNodeNetworksResponse struct {
@@ -1018,7 +1592,7 @@ type QueryNodeNetworksResponse struct {
 func (x *QueryNodeNetworksResponse) Reset() {
 	*x = QueryNodeNetworksResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[14]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1031,7 +1605,7 @@ func (x *QueryNodeNetworksResponse) String() string {
 func (*QueryNodeNetworksResponse) ProtoMessage() {}
 
 func (x *QueryNodeNetworksResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[14]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1044,7 +1618,7 @@ func (x *QueryNodeNetworksResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QueryNodeNetworksResponse.ProtoReflect.Descriptor instead.
 func (*QueryNodeNetworksResponse) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{14}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *QueryNodeNetworksResponse) GetNetworks() []*Network {
@@ -1070,7 +1644,7 @@ type SetupNodeNetworkRequest struct {
 func (x *SetupNodeNetworkRequest) Reset() {
 	*x = SetupNodeNetworkRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[15]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1083,7 +1657,7 @@ func (x *SetupNodeNetworkRequest) String() string {
 func (*SetupNodeNetworkRequest) ProtoMessage() {}
 
 func (x *SetupNodeNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[15]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1096,7 +1670,7 @@ func (x *SetupNodeNetworkRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetupNodeNetworkRequest.ProtoReflect.Descriptor instead.
 func (*SetupNodeNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{15}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{26}
 }
 
 type SetupNodeNetworkResponse struct {
@@ -1108,7 +1682,7 @@ type SetupNodeNetworkResponse struct {
 func (x *SetupNodeNetworkResponse) Reset() {
 	*x = SetupNodeNetworkResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[16]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1121,7 +1695,7 @@ func (x *SetupNodeNetworkResponse) String() string {
 func (*SetupNodeNetworkResponse) ProtoMessage() {}
 
 func (x *SetupNodeNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[16]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1134,7 +1708,7 @@ func (x *SetupNodeNetworkResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetupNodeNetworkResponse.ProtoReflect.Descriptor instead.
 func (*SetupNodeNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{16}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{27}
 }
 
 type QueryPodNetworkRequest struct {
@@ -1150,7 +1724,7 @@ type QueryPodNetworkRequest struct {
 func (x *QueryPodNetworkRequest) Reset() {
 	*x = QueryPodNetworkRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[17]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1163,7 +1737,7 @@ func (x *QueryPodNetworkRequest) String() string {
 func (*QueryPodNetworkRequest) ProtoMessage() {}
 
 func (x *QueryPodNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[17]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1176,7 +1750,7 @@ func (x *QueryPodNetworkRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QueryPodNetworkRequest.ProtoReflect.Descriptor instead.
 func (*QueryPodNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{17}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *QueryPodNetworkRequest) GetName() string {
@@ -1212,7 +1786,7 @@ type QueryPodNetworkResponse struct {
 func (x *QueryPodNetworkResponse) Reset() {
 	*x = QueryPodNetworkResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[18]
+		mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1225,7 +1799,7 @@ func (x *QueryPodNetworkResponse) String() string {
 func (*QueryPodNetworkResponse) ProtoMessage() {}
 
 func (x *QueryPodNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[18]
+	mi := &file_pkg_apis_runtime_beta_api_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1238,7 +1812,7 @@ func (x *QueryPodNetworkResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QueryPodNetworkResponse.ProtoReflect.Descriptor instead.
 func (*QueryPodNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{18}
+	return file_pkg_apis_runtime_beta_api_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *QueryPodNetworkResponse) GetIpconfigs() map[string]*IPConfig {
@@ -1260,8 +1834,130 @@ var File_pkg_apis_runtime_beta_api_proto protoreflect.FileDescriptor
 var file_pkg_apis_runtime_beta_api_proto_rawDesc = []byte{
 	0x0a, 0x1f, 0x70, 0x6b, 0x67, 0x2f, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x72, 0x75, 0x6e, 0x74, 0x69,
 	0x6d, 0x65, 0x2f, 0x62, 0x65, 0x74, 0x61, 0x2f, 0x61, 0x70, 0x69, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x12, 0x03, 0x6b, 0x6e, 0x69, 0x22, 0x94, 0x04, 0x0a, 0x14, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x6f, 0x12, 0x03, 0x6b, 0x6e, 0x69, 0x22, 0xcb, 0x05, 0x0a, 0x1a, 0x50, 0x6f, 0x73, 0x74, 0x41,
+	0x74, 0x74, 0x61, 0x63, 0x68, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x1c, 0x0a, 0x09, 0x6e,
+	0x61, 0x6d, 0x65, 0x73, 0x70, 0x61, 0x63, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09,
+	0x6e, 0x61, 0x6d, 0x65, 0x73, 0x70, 0x61, 0x63, 0x65, 0x12, 0x43, 0x0a, 0x06, 0x6c, 0x61, 0x62,
+	0x65, 0x6c, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2b, 0x2e, 0x6b, 0x6e, 0x69, 0x2e,
+	0x50, 0x6f, 0x73, 0x74, 0x41, 0x74, 0x74, 0x61, 0x63, 0x68, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66,
+	0x61, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x4c, 0x61, 0x62, 0x65, 0x6c,
+	0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x06, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x73, 0x12, 0x52,
+	0x0a, 0x0b, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x06, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x30, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x50, 0x6f, 0x73, 0x74, 0x41, 0x74,
+	0x74, 0x61, 0x63, 0x68, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x2e, 0x41, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73,
+	0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0b, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x73, 0x12, 0x4c, 0x0a, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x18,
+	0x07, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2e, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x50, 0x6f, 0x73, 0x74,
+	0x41, 0x74, 0x74, 0x61, 0x63, 0x68, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61,
+	0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61,
+	0x12, 0x59, 0x0a, 0x0e, 0x70, 0x72, 0x65, 0x76, 0x5f, 0x69, 0x70, 0x63, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x73, 0x18, 0x08, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x32, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x50,
+	0x6f, 0x73, 0x74, 0x41, 0x74, 0x74, 0x61, 0x63, 0x68, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61,
+	0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x50, 0x72, 0x65, 0x76, 0x49, 0x70,
+	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0d, 0x70, 0x72,
+	0x65, 0x76, 0x49, 0x70, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x12, 0x1d, 0x0a, 0x0a, 0x6e,
+	0x65, 0x74, 0x6e, 0x73, 0x5f, 0x70, 0x61, 0x74, 0x68, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x09, 0x6e, 0x65, 0x74, 0x6e, 0x73, 0x50, 0x61, 0x74, 0x68, 0x1a, 0x39, 0x0a, 0x0b, 0x4c, 0x61,
+	0x62, 0x65, 0x6c, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a, 0x3e, 0x0a, 0x10, 0x41, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a, 0x3c, 0x0a, 0x0e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61,
+	0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c,
+	0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a,
+	0x02, 0x38, 0x01, 0x1a, 0x4f, 0x0a, 0x12, 0x50, 0x72, 0x65, 0x76, 0x49, 0x70, 0x63, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x23, 0x0a, 0x05, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0d, 0x2e, 0x6b, 0x6e, 0x69,
+	0x2e, 0x49, 0x50, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,
+	0x3a, 0x02, 0x38, 0x01, 0x22, 0x11, 0x0a, 0x0f, 0x4c, 0x69, 0x73, 0x74, 0x50, 0x6f, 0x64, 0x73,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0xc7, 0x04, 0x0a, 0x03, 0x50, 0x6f, 0x64, 0x12,
+	0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e,
+	0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x1c, 0x0a, 0x09, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x70, 0x61,
+	0x63, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x70,
+	0x61, 0x63, 0x65, 0x12, 0x2c, 0x0a, 0x06, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x73, 0x18, 0x05, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x50, 0x6f, 0x64, 0x2e, 0x4c, 0x61,
+	0x62, 0x65, 0x6c, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x06, 0x6c, 0x61, 0x62, 0x65, 0x6c,
+	0x73, 0x12, 0x3b, 0x0a, 0x0b, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73,
+	0x18, 0x06, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x50, 0x6f, 0x64,
+	0x2e, 0x41, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x45, 0x6e, 0x74, 0x72,
+	0x79, 0x52, 0x0b, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x35,
+	0x0a, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x18, 0x07, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x17, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x50, 0x6f, 0x64, 0x2e, 0x45, 0x78, 0x74, 0x72,
+	0x61, 0x64, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x09, 0x65, 0x78, 0x74, 0x72,
+	0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x35, 0x0a, 0x09, 0x69, 0x70, 0x63, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x73, 0x18, 0x08, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x50,
+	0x6f, 0x64, 0x2e, 0x49, 0x70, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x45, 0x6e, 0x74, 0x72,
+	0x79, 0x52, 0x09, 0x69, 0x70, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x12, 0x1d, 0x0a, 0x0a,
+	0x6e, 0x65, 0x74, 0x6e, 0x73, 0x5f, 0x70, 0x61, 0x74, 0x68, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x09, 0x6e, 0x65, 0x74, 0x6e, 0x73, 0x50, 0x61, 0x74, 0x68, 0x1a, 0x39, 0x0a, 0x0b, 0x4c,
+	0x61, 0x62, 0x65, 0x6c, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65,
+	0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05,
+	0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c,
+	0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a, 0x3e, 0x0a, 0x10, 0x41, 0x6e, 0x6e, 0x6f, 0x74, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65,
+	0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05,
+	0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c,
+	0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a, 0x3c, 0x0a, 0x0e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x64,
+	0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61,
+	0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,
+	0x3a, 0x02, 0x38, 0x01, 0x1a, 0x4b, 0x0a, 0x0e, 0x49, 0x70, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x23, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0d, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x49, 0x50,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38,
+	0x01, 0x22, 0x8a, 0x01, 0x0a, 0x10, 0x4c, 0x69, 0x73, 0x74, 0x50, 0x6f, 0x64, 0x73, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x33, 0x0a, 0x04, 0x70, 0x6f, 0x64, 0x73, 0x18, 0x01,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x50,
+	0x6f, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x50, 0x6f, 0x64, 0x73,
+	0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x04, 0x70, 0x6f, 0x64, 0x73, 0x1a, 0x41, 0x0a, 0x09, 0x50,
+	0x6f, 0x64, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x1e, 0x0a, 0x05, 0x76, 0x61,
+	0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x08, 0x2e, 0x6b, 0x6e, 0x69, 0x2e,
+	0x50, 0x6f, 0x64, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x14,
+	0x0a, 0x12, 0x4c, 0x69, 0x73, 0x74, 0x50, 0x6c, 0x75, 0x67, 0x69, 0x6e, 0x73, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x22, 0x15, 0x0a, 0x13, 0x4c, 0x69, 0x73, 0x74, 0x50, 0x6c, 0x75, 0x67,
+	0x69, 0x6e, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x17, 0x0a, 0x15, 0x52,
+	0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x50, 0x6c, 0x75, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x22, 0x18, 0x0a, 0x16, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72,
+	0x50, 0x6c, 0x75, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x19,
+	0x0a, 0x17, 0x44, 0x65, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x50, 0x6c, 0x75, 0x67,
+	0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x1a, 0x0a, 0x18, 0x44, 0x65, 0x72,
+	0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x50, 0x6c, 0x75, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0xc6, 0x02, 0x0a, 0x1b, 0x50, 0x6f, 0x73, 0x74, 0x41, 0x74,
+	0x74, 0x61, 0x63, 0x68, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4d, 0x0a, 0x09, 0x69, 0x70, 0x63, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2f, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x50,
+	0x6f, 0x73, 0x74, 0x41, 0x74, 0x74, 0x61, 0x63, 0x68, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61,
+	0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x70, 0x63, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x09, 0x69, 0x70, 0x63, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x73, 0x12, 0x4d, 0x0a, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74,
+	0x61, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2f, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x50, 0x6f,
+	0x73, 0x74, 0x41, 0x74, 0x74, 0x61, 0x63, 0x68, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63,
+	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x64,
+	0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61, 0x64,
+	0x61, 0x74, 0x61, 0x1a, 0x4b, 0x0a, 0x0e, 0x49, 0x70, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73,
+	0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x23, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0d, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x49, 0x50, 0x43,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01,
+	0x1a, 0x3c, 0x0a, 0x0e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74,
+	0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xb4,
+	0x04, 0x0a, 0x1c, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x73, 0x6f, 0x6c, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
 	0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e,
 	0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
 	0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x1c, 0x0a, 0x09, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x70, 0x61,
@@ -1269,60 +1965,64 @@ var file_pkg_apis_runtime_beta_api_proto_rawDesc = []byte{
 	0x61, 0x63, 0x65, 0x12, 0x2a, 0x0a, 0x11, 0x6e, 0x65, 0x74, 0x6e, 0x73, 0x5f, 0x70, 0x61, 0x74,
 	0x68, 0x5f, 0x70, 0x72, 0x65, 0x66, 0x69, 0x78, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f,
 	0x6e, 0x65, 0x74, 0x6e, 0x73, 0x50, 0x61, 0x74, 0x68, 0x50, 0x72, 0x65, 0x66, 0x69, 0x78, 0x12,
-	0x3d, 0x0a, 0x06, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32,
-	0x25, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x65, 0x74, 0x77,
-	0x6f, 0x72, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x4c, 0x61, 0x62, 0x65, 0x6c,
-	0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x06, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x73, 0x12, 0x4c,
-	0x0a, 0x0b, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x06, 0x20,
-	0x03, 0x28, 0x0b, 0x32, 0x2a, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x41,
+	0x45, 0x0a, 0x06, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x2d, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x73, 0x6f, 0x6c,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x2e, 0x4c, 0x61, 0x62, 0x65, 0x6c, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x06,
+	0x6c, 0x61, 0x62, 0x65, 0x6c, 0x73, 0x12, 0x54, 0x0a, 0x0b, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x06, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x32, 0x2e, 0x6b, 0x6e,
+	0x69, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x73, 0x6f, 0x6c, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x41,
 	0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52,
-	0x0b, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x46, 0x0a, 0x09,
+	0x0b, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x4e, 0x0a, 0x09,
 	0x65, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x18, 0x07, 0x20, 0x03, 0x28, 0x0b, 0x32,
-	0x28, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x65, 0x74, 0x77,
-	0x6f, 0x72, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x45, 0x78, 0x74, 0x72, 0x61,
-	0x64, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61,
-	0x64, 0x61, 0x74, 0x61, 0x1a, 0x39, 0x0a, 0x0b, 0x4c, 0x61, 0x62, 0x65, 0x6c, 0x73, 0x45, 0x6e,
-	0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a,
-	0x3e, 0x0a, 0x10, 0x41, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x45, 0x6e,
-	0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a,
-	0x3c, 0x0a, 0x0e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72,
-	0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
-	0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xbd, 0x01,
-	0x0a, 0x15, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52,
+	0x30, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x73, 0x6f, 0x6c,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x2e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72,
+	0x79, 0x52, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x1a, 0x39, 0x0a, 0x0b,
+	0x4c, 0x61, 0x62, 0x65, 0x6c, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b,
+	0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61,
+	0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a, 0x3e, 0x0a, 0x10, 0x41, 0x6e, 0x6e, 0x6f, 0x74,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b,
+	0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61,
+	0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a, 0x3c, 0x0a, 0x0e, 0x45, 0x78, 0x74, 0x72, 0x61,
+	0x64, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xcd, 0x01, 0x0a, 0x1d, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x49, 0x73, 0x6f, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52,
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x6e, 0x65, 0x74, 0x6e, 0x73,
 	0x5f, 0x70, 0x61, 0x74, 0x68, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6e, 0x65, 0x74,
-	0x6e, 0x73, 0x50, 0x61, 0x74, 0x68, 0x12, 0x47, 0x0a, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61, 0x64,
-	0x61, 0x74, 0x61, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x6b, 0x6e, 0x69, 0x2e,
-	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x45,
-	0x6e, 0x74, 0x72, 0x79, 0x52, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x1a,
-	0x3c, 0x0a, 0x0e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72,
-	0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
-	0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xfd, 0x01,
-	0x0a, 0x14, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52,
+	0x6e, 0x73, 0x50, 0x61, 0x74, 0x68, 0x12, 0x4f, 0x0a, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61, 0x64,
+	0x61, 0x74, 0x61, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x31, 0x2e, 0x6b, 0x6e, 0x69, 0x2e,
+	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x73, 0x6f, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x44,
+	0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x78,
+	0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x09, 0x65, 0x78,
+	0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x1a, 0x3c, 0x0a, 0x0e, 0x45, 0x78, 0x74, 0x72, 0x61,
+	0x64, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x8d, 0x02, 0x0a, 0x1c, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
+	0x49, 0x73, 0x6f, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52,
 	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02,
 	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x6e, 0x61,
 	0x6d, 0x65, 0x73, 0x70, 0x61, 0x63, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6e,
 	0x61, 0x6d, 0x65, 0x73, 0x70, 0x61, 0x63, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x6e, 0x65, 0x74, 0x6e,
 	0x73, 0x5f, 0x70, 0x61, 0x74, 0x68, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6e, 0x65,
-	0x74, 0x6e, 0x73, 0x50, 0x61, 0x74, 0x68, 0x12, 0x46, 0x0a, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61,
-	0x64, 0x61, 0x74, 0x61, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x28, 0x2e, 0x6b, 0x6e, 0x69,
-	0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x45,
-	0x6e, 0x74, 0x72, 0x79, 0x52, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x1a,
-	0x3c, 0x0a, 0x0e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72,
-	0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
-	0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x17, 0x0a,
-	0x15, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65,
+	0x74, 0x6e, 0x73, 0x50, 0x61, 0x74, 0x68, 0x12, 0x4e, 0x0a, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61,
+	0x64, 0x61, 0x74, 0x61, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x30, 0x2e, 0x6b, 0x6e, 0x69,
+	0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x49, 0x73, 0x6f, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x45, 0x78,
+	0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x09, 0x65, 0x78,
+	0x74, 0x72, 0x61, 0x64, 0x61, 0x74, 0x61, 0x1a, 0x3c, 0x0a, 0x0e, 0x45, 0x78, 0x74, 0x72, 0x61,
+	0x64, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x1f, 0x0a, 0x1d, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x49,
+	0x73, 0x6f, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65,
 	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x82, 0x05, 0x0a, 0x16, 0x41, 0x74, 0x74, 0x61, 0x63,
 	0x68, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
 	0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
@@ -1513,16 +2213,19 @@ var file_pkg_apis_runtime_beta_api_proto_rawDesc = []byte{
 	0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x2a,
 	0x26, 0x0a, 0x08, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x12, 0x07, 0x0a, 0x03, 0x54,
 	0x43, 0x50, 0x10, 0x00, 0x12, 0x07, 0x0a, 0x03, 0x55, 0x44, 0x50, 0x10, 0x01, 0x12, 0x08, 0x0a,
-	0x04, 0x53, 0x43, 0x54, 0x50, 0x10, 0x02, 0x32, 0xb2, 0x04, 0x0a, 0x03, 0x4b, 0x4e, 0x49, 0x12,
-	0x48, 0x0a, 0x0d, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b,
-	0x12, 0x19, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x65, 0x74,
-	0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x6b, 0x6e,
-	0x69, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x48, 0x0a, 0x0d, 0x44, 0x65, 0x6c,
-	0x65, 0x74, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x12, 0x19, 0x2e, 0x6b, 0x6e, 0x69,
-	0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x44, 0x65, 0x6c, 0x65,
-	0x74, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x04, 0x53, 0x43, 0x54, 0x50, 0x10, 0x02, 0x32, 0xe2, 0x04, 0x0a, 0x03, 0x4b, 0x4e, 0x49, 0x12,
+	0x60, 0x0a, 0x15, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x73, 0x6f, 0x6c, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x12, 0x21, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x73, 0x6f, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x6f,
+	0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x6b, 0x6e,
+	0x69, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x73, 0x6f, 0x6c, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x00, 0x12, 0x60, 0x0a, 0x15, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x49, 0x73, 0x6f, 0x6c, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x12, 0x21, 0x2e, 0x6b, 0x6e, 0x69,
+	0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x49, 0x73, 0x6f, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e,
+	0x6b, 0x6e, 0x69, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x49, 0x73, 0x6f, 0x6c, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
 	0x65, 0x22, 0x00, 0x12, 0x4e, 0x0a, 0x0f, 0x41, 0x74, 0x74, 0x61, 0x63, 0x68, 0x49, 0x6e, 0x74,
 	0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x12, 0x1b, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x41, 0x74, 0x74,
 	0x61, 0x63, 0x68, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75,
@@ -1538,19 +2241,45 @@ var file_pkg_apis_runtime_beta_api_proto_rawDesc = []byte{
 	0x72, 0x79, 0x50, 0x6f, 0x64, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50,
 	0x6f, 0x64, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x22, 0x00, 0x12, 0x51, 0x0a, 0x10, 0x53, 0x65, 0x74, 0x75, 0x70, 0x4e, 0x6f, 0x64, 0x65,
-	0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x12, 0x1c, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x53, 0x65,
-	0x74, 0x75, 0x70, 0x4e, 0x6f, 0x64, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x53, 0x65, 0x74, 0x75,
-	0x70, 0x4e, 0x6f, 0x64, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x54, 0x0a, 0x11, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4e,
-	0x6f, 0x64, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x73, 0x12, 0x1d, 0x2e, 0x6b, 0x6e,
-	0x69, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4e, 0x6f, 0x64, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f,
-	0x72, 0x6b, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x6b, 0x6e, 0x69,
-	0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4e, 0x6f, 0x64, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72,
-	0x6b, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x17, 0x5a, 0x15,
-	0x70, 0x6b, 0x67, 0x2f, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x72, 0x75, 0x6e, 0x74, 0x69, 0x6d, 0x65,
-	0x2f, 0x62, 0x65, 0x74, 0x61, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x22, 0x00, 0x12, 0x54, 0x0a, 0x11, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4e, 0x6f, 0x64, 0x65,
+	0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x73, 0x12, 0x1d, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x51,
+	0x75, 0x65, 0x72, 0x79, 0x4e, 0x6f, 0x64, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x73,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x51, 0x75,
+	0x65, 0x72, 0x79, 0x4e, 0x6f, 0x64, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x73, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x51, 0x0a, 0x10, 0x53, 0x65, 0x74,
+	0x75, 0x70, 0x4e, 0x6f, 0x64, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x12, 0x1c, 0x2e,
+	0x6b, 0x6e, 0x69, 0x2e, 0x53, 0x65, 0x74, 0x75, 0x70, 0x4e, 0x6f, 0x64, 0x65, 0x4e, 0x65, 0x74,
+	0x77, 0x6f, 0x72, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x6b, 0x6e,
+	0x69, 0x2e, 0x53, 0x65, 0x74, 0x75, 0x70, 0x4e, 0x6f, 0x64, 0x65, 0x4e, 0x65, 0x74, 0x77, 0x6f,
+	0x72, 0x6b, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x32, 0x9d, 0x01, 0x0a,
+	0x04, 0x4b, 0x4e, 0x49, 0x58, 0x12, 0x5a, 0x0a, 0x13, 0x50, 0x6f, 0x73, 0x74, 0x41, 0x74, 0x74,
+	0x61, 0x63, 0x68, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x12, 0x1f, 0x2e, 0x6b,
+	0x6e, 0x69, 0x2e, 0x50, 0x6f, 0x73, 0x74, 0x41, 0x74, 0x74, 0x61, 0x63, 0x68, 0x49, 0x6e, 0x74,
+	0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e,
+	0x6b, 0x6e, 0x69, 0x2e, 0x50, 0x6f, 0x73, 0x74, 0x41, 0x74, 0x74, 0x61, 0x63, 0x68, 0x49, 0x6e,
+	0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x00, 0x12, 0x39, 0x0a, 0x08, 0x4c, 0x69, 0x73, 0x74, 0x50, 0x6f, 0x64, 0x73, 0x12, 0x14, 0x2e,
+	0x6b, 0x6e, 0x69, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x50, 0x6f, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x50, 0x6f,
+	0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x32, 0xf7, 0x01, 0x0a,
+	0x11, 0x4b, 0x4e, 0x49, 0x58, 0x50, 0x6c, 0x75, 0x67, 0x69, 0x6e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x12, 0x4b, 0x0a, 0x0e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x50, 0x6c,
+	0x75, 0x67, 0x69, 0x6e, 0x12, 0x1a, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73,
+	0x74, 0x65, 0x72, 0x50, 0x6c, 0x75, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x1b, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x50,
+	0x6c, 0x75, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12,
+	0x51, 0x0a, 0x10, 0x44, 0x65, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x50, 0x6c, 0x75,
+	0x67, 0x69, 0x6e, 0x12, 0x1c, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x44, 0x65, 0x72, 0x65, 0x67, 0x69,
+	0x73, 0x74, 0x65, 0x72, 0x50, 0x6c, 0x75, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x1d, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x44, 0x65, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74,
+	0x65, 0x72, 0x50, 0x6c, 0x75, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x22, 0x00, 0x12, 0x42, 0x0a, 0x0b, 0x4c, 0x69, 0x73, 0x74, 0x50, 0x6c, 0x75, 0x67, 0x69, 0x6e,
+	0x73, 0x12, 0x17, 0x2e, 0x6b, 0x6e, 0x69, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x50, 0x6c, 0x75, 0x67,
+	0x69, 0x6e, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x6b, 0x6e, 0x69,
+	0x2e, 0x4c, 0x69, 0x73, 0x74, 0x50, 0x6c, 0x75, 0x67, 0x69, 0x6e, 0x73, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x17, 0x5a, 0x15, 0x70, 0x6b, 0x67, 0x2f, 0x61, 0x70,
+	0x69, 0x73, 0x2f, 0x72, 0x75, 0x6e, 0x74, 0x69, 0x6d, 0x65, 0x2f, 0x62, 0x65, 0x74, 0x61, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1566,95 +2295,142 @@ func file_pkg_apis_runtime_beta_api_proto_rawDescGZIP() []byte {
 }
 
 var file_pkg_apis_runtime_beta_api_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_pkg_apis_runtime_beta_api_proto_msgTypes = make([]protoimpl.MessageInfo, 38)
+var file_pkg_apis_runtime_beta_api_proto_msgTypes = make([]protoimpl.MessageInfo, 60)
 var file_pkg_apis_runtime_beta_api_proto_goTypes = []interface{}{
-	(Protocol)(0),                     // 0: kni.Protocol
-	(*CreateNetworkRequest)(nil),      // 1: kni.CreateNetworkRequest
-	(*CreateNetworkResponse)(nil),     // 2: kni.CreateNetworkResponse
-	(*DeleteNetworkRequest)(nil),      // 3: kni.DeleteNetworkRequest
-	(*DeleteNetworkResponse)(nil),     // 4: kni.DeleteNetworkResponse
-	(*AttachInterfaceRequest)(nil),    // 5: kni.AttachInterfaceRequest
-	(*AttachInterfaceResponse)(nil),   // 6: kni.AttachInterfaceResponse
-	(*DetachInterfaceRequest)(nil),    // 7: kni.DetachInterfaceRequest
-	(*DetachInterfaceResponse)(nil),   // 8: kni.DetachInterfaceResponse
-	(*IPConfig)(nil),                  // 9: kni.IPConfig
-	(*Network)(nil),                   // 10: kni.Network
-	(*Isolation)(nil),                 // 11: kni.Isolation
-	(*DNSConfig)(nil),                 // 12: kni.DNSConfig
-	(*PortMapping)(nil),               // 13: kni.PortMapping
-	(*QueryNodeNetworksRequest)(nil),  // 14: kni.QueryNodeNetworksRequest
-	(*QueryNodeNetworksResponse)(nil), // 15: kni.QueryNodeNetworksResponse
-	(*SetupNodeNetworkRequest)(nil),   // 16: kni.SetupNodeNetworkRequest
-	(*SetupNodeNetworkResponse)(nil),  // 17: kni.SetupNodeNetworkResponse
-	(*QueryPodNetworkRequest)(nil),    // 18: kni.QueryPodNetworkRequest
-	(*QueryPodNetworkResponse)(nil),   // 19: kni.QueryPodNetworkResponse
-	nil,                               // 20: kni.CreateNetworkRequest.LabelsEntry
-	nil,                               // 21: kni.CreateNetworkRequest.AnnotationsEntry
-	nil,                               // 22: kni.CreateNetworkRequest.ExtradataEntry
-	nil,                               // 23: kni.CreateNetworkResponse.ExtradataEntry
-	nil,                               // 24: kni.DeleteNetworkRequest.ExtradataEntry
-	nil,                               // 25: kni.AttachInterfaceRequest.LabelsEntry
-	nil,                               // 26: kni.AttachInterfaceRequest.AnnotationsEntry
-	nil,                               // 27: kni.AttachInterfaceRequest.ExtradataEntry
-	nil,                               // 28: kni.AttachInterfaceResponse.IpconfigsEntry
-	nil,                               // 29: kni.AttachInterfaceResponse.ExtradataEntry
-	nil,                               // 30: kni.DetachInterfaceRequest.LabelsEntry
-	nil,                               // 31: kni.DetachInterfaceRequest.AnnotationsEntry
-	nil,                               // 32: kni.DetachInterfaceRequest.ExtradataEntry
-	nil,                               // 33: kni.IPConfig.ExtradataEntry
-	nil,                               // 34: kni.Network.ExtradataEntry
-	nil,                               // 35: kni.Isolation.ExtradataEntry
-	nil,                               // 36: kni.QueryNodeNetworksResponse.ExtradataEntry
-	nil,                               // 37: kni.QueryPodNetworkResponse.IpconfigsEntry
-	nil,                               // 38: kni.QueryPodNetworkResponse.ExtradataEntry
+	(Protocol)(0),                         // 0: kni.Protocol
+	(*PostAttachInterfaceRequest)(nil),    // 1: kni.PostAttachInterfaceRequest
+	(*ListPodsRequest)(nil),               // 2: kni.ListPodsRequest
+	(*Pod)(nil),                           // 3: kni.Pod
+	(*ListPodsResponse)(nil),              // 4: kni.ListPodsResponse
+	(*ListPluginsRequest)(nil),            // 5: kni.ListPluginsRequest
+	(*ListPluginsResponse)(nil),           // 6: kni.ListPluginsResponse
+	(*RegisterPluginRequest)(nil),         // 7: kni.RegisterPluginRequest
+	(*RegisterPluginResponse)(nil),        // 8: kni.RegisterPluginResponse
+	(*DeregisterPluginRequest)(nil),       // 9: kni.DeregisterPluginRequest
+	(*DeregisterPluginResponse)(nil),      // 10: kni.DeregisterPluginResponse
+	(*PostAttachInterfaceResponse)(nil),   // 11: kni.PostAttachInterfaceResponse
+	(*CreateIsolationDomainRequest)(nil),  // 12: kni.CreateIsolationDomainRequest
+	(*CreateIsolationDomainResponse)(nil), // 13: kni.CreateIsolationDomainResponse
+	(*DeleteIsolationDomainRequest)(nil),  // 14: kni.DeleteIsolationDomainRequest
+	(*DeleteIsolationDomainResponse)(nil), // 15: kni.DeleteIsolationDomainResponse
+	(*AttachInterfaceRequest)(nil),        // 16: kni.AttachInterfaceRequest
+	(*AttachInterfaceResponse)(nil),       // 17: kni.AttachInterfaceResponse
+	(*DetachInterfaceRequest)(nil),        // 18: kni.DetachInterfaceRequest
+	(*DetachInterfaceResponse)(nil),       // 19: kni.DetachInterfaceResponse
+	(*IPConfig)(nil),                      // 20: kni.IPConfig
+	(*Network)(nil),                       // 21: kni.Network
+	(*Isolation)(nil),                     // 22: kni.Isolation
+	(*DNSConfig)(nil),                     // 23: kni.DNSConfig
+	(*PortMapping)(nil),                   // 24: kni.PortMapping
+	(*QueryNodeNetworksRequest)(nil),      // 25: kni.QueryNodeNetworksRequest
+	(*QueryNodeNetworksResponse)(nil),     // 26: kni.QueryNodeNetworksResponse
+	(*SetupNodeNetworkRequest)(nil),       // 27: kni.SetupNodeNetworkRequest
+	(*SetupNodeNetworkResponse)(nil),      // 28: kni.SetupNodeNetworkResponse
+	(*QueryPodNetworkRequest)(nil),        // 29: kni.QueryPodNetworkRequest
+	(*QueryPodNetworkResponse)(nil),       // 30: kni.QueryPodNetworkResponse
+	nil,                                   // 31: kni.PostAttachInterfaceRequest.LabelsEntry
+	nil,                                   // 32: kni.PostAttachInterfaceRequest.AnnotationsEntry
+	nil,                                   // 33: kni.PostAttachInterfaceRequest.ExtradataEntry
+	nil,                                   // 34: kni.PostAttachInterfaceRequest.PrevIpconfigsEntry
+	nil,                                   // 35: kni.Pod.LabelsEntry
+	nil,                                   // 36: kni.Pod.AnnotationsEntry
+	nil,                                   // 37: kni.Pod.ExtradataEntry
+	nil,                                   // 38: kni.Pod.IpconfigsEntry
+	nil,                                   // 39: kni.ListPodsResponse.PodsEntry
+	nil,                                   // 40: kni.PostAttachInterfaceResponse.IpconfigsEntry
+	nil,                                   // 41: kni.PostAttachInterfaceResponse.ExtradataEntry
+	nil,                                   // 42: kni.CreateIsolationDomainRequest.LabelsEntry
+	nil,                                   // 43: kni.CreateIsolationDomainRequest.AnnotationsEntry
+	nil,                                   // 44: kni.CreateIsolationDomainRequest.ExtradataEntry
+	nil,                                   // 45: kni.CreateIsolationDomainResponse.ExtradataEntry
+	nil,                                   // 46: kni.DeleteIsolationDomainRequest.ExtradataEntry
+	nil,                                   // 47: kni.AttachInterfaceRequest.LabelsEntry
+	nil,                                   // 48: kni.AttachInterfaceRequest.AnnotationsEntry
+	nil,                                   // 49: kni.AttachInterfaceRequest.ExtradataEntry
+	nil,                                   // 50: kni.AttachInterfaceResponse.IpconfigsEntry
+	nil,                                   // 51: kni.AttachInterfaceResponse.ExtradataEntry
+	nil,                                   // 52: kni.DetachInterfaceRequest.LabelsEntry
+	nil,                                   // 53: kni.DetachInterfaceRequest.AnnotationsEntry
+	nil,                                   // 54: kni.DetachInterfaceRequest.ExtradataEntry
+	nil,                                   // 55: kni.IPConfig.ExtradataEntry
+	nil,                                   // 56: kni.Network.ExtradataEntry
+	nil,                                   // 57: kni.Isolation.ExtradataEntry
+	nil,                                   // 58: kni.QueryNodeNetworksResponse.ExtradataEntry
+	nil,                                   // 59: kni.QueryPodNetworkResponse.IpconfigsEntry
+	nil,                                   // 60: kni.QueryPodNetworkResponse.ExtradataEntry
 }
 var file_pkg_apis_runtime_beta_api_proto_depIdxs = []int32{
-	20, // 0: kni.CreateNetworkRequest.labels:type_name -> kni.CreateNetworkRequest.LabelsEntry
-	21, // 1: kni.CreateNetworkRequest.annotations:type_name -> kni.CreateNetworkRequest.AnnotationsEntry
-	22, // 2: kni.CreateNetworkRequest.extradata:type_name -> kni.CreateNetworkRequest.ExtradataEntry
-	23, // 3: kni.CreateNetworkResponse.extradata:type_name -> kni.CreateNetworkResponse.ExtradataEntry
-	24, // 4: kni.DeleteNetworkRequest.extradata:type_name -> kni.DeleteNetworkRequest.ExtradataEntry
-	11, // 5: kni.AttachInterfaceRequest.isolation:type_name -> kni.Isolation
-	12, // 6: kni.AttachInterfaceRequest.dns_config:type_name -> kni.DNSConfig
-	13, // 7: kni.AttachInterfaceRequest.port_mappings:type_name -> kni.PortMapping
-	25, // 8: kni.AttachInterfaceRequest.labels:type_name -> kni.AttachInterfaceRequest.LabelsEntry
-	26, // 9: kni.AttachInterfaceRequest.annotations:type_name -> kni.AttachInterfaceRequest.AnnotationsEntry
-	27, // 10: kni.AttachInterfaceRequest.extradata:type_name -> kni.AttachInterfaceRequest.ExtradataEntry
-	28, // 11: kni.AttachInterfaceResponse.ipconfigs:type_name -> kni.AttachInterfaceResponse.IpconfigsEntry
-	29, // 12: kni.AttachInterfaceResponse.extradata:type_name -> kni.AttachInterfaceResponse.ExtradataEntry
-	11, // 13: kni.DetachInterfaceRequest.isolation:type_name -> kni.Isolation
-	30, // 14: kni.DetachInterfaceRequest.labels:type_name -> kni.DetachInterfaceRequest.LabelsEntry
-	31, // 15: kni.DetachInterfaceRequest.annotations:type_name -> kni.DetachInterfaceRequest.AnnotationsEntry
-	32, // 16: kni.DetachInterfaceRequest.extradata:type_name -> kni.DetachInterfaceRequest.ExtradataEntry
-	33, // 17: kni.IPConfig.extradata:type_name -> kni.IPConfig.ExtradataEntry
-	34, // 18: kni.Network.extradata:type_name -> kni.Network.ExtradataEntry
-	35, // 19: kni.Isolation.extradata:type_name -> kni.Isolation.ExtradataEntry
-	0,  // 20: kni.PortMapping.protocol:type_name -> kni.Protocol
-	10, // 21: kni.QueryNodeNetworksResponse.networks:type_name -> kni.Network
-	36, // 22: kni.QueryNodeNetworksResponse.extradata:type_name -> kni.QueryNodeNetworksResponse.ExtradataEntry
-	37, // 23: kni.QueryPodNetworkResponse.ipconfigs:type_name -> kni.QueryPodNetworkResponse.IpconfigsEntry
-	38, // 24: kni.QueryPodNetworkResponse.extradata:type_name -> kni.QueryPodNetworkResponse.ExtradataEntry
-	9,  // 25: kni.AttachInterfaceResponse.IpconfigsEntry.value:type_name -> kni.IPConfig
-	9,  // 26: kni.QueryPodNetworkResponse.IpconfigsEntry.value:type_name -> kni.IPConfig
-	1,  // 27: kni.KNI.CreateNetwork:input_type -> kni.CreateNetworkRequest
-	3,  // 28: kni.KNI.DeleteNetwork:input_type -> kni.DeleteNetworkRequest
-	5,  // 29: kni.KNI.AttachInterface:input_type -> kni.AttachInterfaceRequest
-	7,  // 30: kni.KNI.DetachInterface:input_type -> kni.DetachInterfaceRequest
-	18, // 31: kni.KNI.QueryPodNetwork:input_type -> kni.QueryPodNetworkRequest
-	16, // 32: kni.KNI.SetupNodeNetwork:input_type -> kni.SetupNodeNetworkRequest
-	14, // 33: kni.KNI.QueryNodeNetworks:input_type -> kni.QueryNodeNetworksRequest
-	2,  // 34: kni.KNI.CreateNetwork:output_type -> kni.CreateNetworkResponse
-	4,  // 35: kni.KNI.DeleteNetwork:output_type -> kni.DeleteNetworkResponse
-	6,  // 36: kni.KNI.AttachInterface:output_type -> kni.AttachInterfaceResponse
-	8,  // 37: kni.KNI.DetachInterface:output_type -> kni.DetachInterfaceResponse
-	19, // 38: kni.KNI.QueryPodNetwork:output_type -> kni.QueryPodNetworkResponse
-	17, // 39: kni.KNI.SetupNodeNetwork:output_type -> kni.SetupNodeNetworkResponse
-	15, // 40: kni.KNI.QueryNodeNetworks:output_type -> kni.QueryNodeNetworksResponse
-	34, // [34:41] is the sub-list for method output_type
-	27, // [27:34] is the sub-list for method input_type
-	27, // [27:27] is the sub-list for extension type_name
-	27, // [27:27] is the sub-list for extension extendee
-	0,  // [0:27] is the sub-list for field type_name
+	31, // 0: kni.PostAttachInterfaceRequest.labels:type_name -> kni.PostAttachInterfaceRequest.LabelsEntry
+	32, // 1: kni.PostAttachInterfaceRequest.annotations:type_name -> kni.PostAttachInterfaceRequest.AnnotationsEntry
+	33, // 2: kni.PostAttachInterfaceRequest.extradata:type_name -> kni.PostAttachInterfaceRequest.ExtradataEntry
+	34, // 3: kni.PostAttachInterfaceRequest.prev_ipconfigs:type_name -> kni.PostAttachInterfaceRequest.PrevIpconfigsEntry
+	35, // 4: kni.Pod.labels:type_name -> kni.Pod.LabelsEntry
+	36, // 5: kni.Pod.annotations:type_name -> kni.Pod.AnnotationsEntry
+	37, // 6: kni.Pod.extradata:type_name -> kni.Pod.ExtradataEntry
+	38, // 7: kni.Pod.ipconfigs:type_name -> kni.Pod.IpconfigsEntry
+	39, // 8: kni.ListPodsResponse.pods:type_name -> kni.ListPodsResponse.PodsEntry
+	40, // 9: kni.PostAttachInterfaceResponse.ipconfigs:type_name -> kni.PostAttachInterfaceResponse.IpconfigsEntry
+	41, // 10: kni.PostAttachInterfaceResponse.extradata:type_name -> kni.PostAttachInterfaceResponse.ExtradataEntry
+	42, // 11: kni.CreateIsolationDomainRequest.labels:type_name -> kni.CreateIsolationDomainRequest.LabelsEntry
+	43, // 12: kni.CreateIsolationDomainRequest.annotations:type_name -> kni.CreateIsolationDomainRequest.AnnotationsEntry
+	44, // 13: kni.CreateIsolationDomainRequest.extradata:type_name -> kni.CreateIsolationDomainRequest.ExtradataEntry
+	45, // 14: kni.CreateIsolationDomainResponse.extradata:type_name -> kni.CreateIsolationDomainResponse.ExtradataEntry
+	46, // 15: kni.DeleteIsolationDomainRequest.extradata:type_name -> kni.DeleteIsolationDomainRequest.ExtradataEntry
+	22, // 16: kni.AttachInterfaceRequest.isolation:type_name -> kni.Isolation
+	23, // 17: kni.AttachInterfaceRequest.dns_config:type_name -> kni.DNSConfig
+	24, // 18: kni.AttachInterfaceRequest.port_mappings:type_name -> kni.PortMapping
+	47, // 19: kni.AttachInterfaceRequest.labels:type_name -> kni.AttachInterfaceRequest.LabelsEntry
+	48, // 20: kni.AttachInterfaceRequest.annotations:type_name -> kni.AttachInterfaceRequest.AnnotationsEntry
+	49, // 21: kni.AttachInterfaceRequest.extradata:type_name -> kni.AttachInterfaceRequest.ExtradataEntry
+	50, // 22: kni.AttachInterfaceResponse.ipconfigs:type_name -> kni.AttachInterfaceResponse.IpconfigsEntry
+	51, // 23: kni.AttachInterfaceResponse.extradata:type_name -> kni.AttachInterfaceResponse.ExtradataEntry
+	22, // 24: kni.DetachInterfaceRequest.isolation:type_name -> kni.Isolation
+	52, // 25: kni.DetachInterfaceRequest.labels:type_name -> kni.DetachInterfaceRequest.LabelsEntry
+	53, // 26: kni.DetachInterfaceRequest.annotations:type_name -> kni.DetachInterfaceRequest.AnnotationsEntry
+	54, // 27: kni.DetachInterfaceRequest.extradata:type_name -> kni.DetachInterfaceRequest.ExtradataEntry
+	55, // 28: kni.IPConfig.extradata:type_name -> kni.IPConfig.ExtradataEntry
+	56, // 29: kni.Network.extradata:type_name -> kni.Network.ExtradataEntry
+	57, // 30: kni.Isolation.extradata:type_name -> kni.Isolation.ExtradataEntry
+	0,  // 31: kni.PortMapping.protocol:type_name -> kni.Protocol
+	21, // 32: kni.QueryNodeNetworksResponse.networks:type_name -> kni.Network
+	58, // 33: kni.QueryNodeNetworksResponse.extradata:type_name -> kni.QueryNodeNetworksResponse.ExtradataEntry
+	59, // 34: kni.QueryPodNetworkResponse.ipconfigs:type_name -> kni.QueryPodNetworkResponse.IpconfigsEntry
+	60, // 35: kni.QueryPodNetworkResponse.extradata:type_name -> kni.QueryPodNetworkResponse.ExtradataEntry
+	20, // 36: kni.PostAttachInterfaceRequest.PrevIpconfigsEntry.value:type_name -> kni.IPConfig
+	20, // 37: kni.Pod.IpconfigsEntry.value:type_name -> kni.IPConfig
+	3,  // 38: kni.ListPodsResponse.PodsEntry.value:type_name -> kni.Pod
+	20, // 39: kni.PostAttachInterfaceResponse.IpconfigsEntry.value:type_name -> kni.IPConfig
+	20, // 40: kni.AttachInterfaceResponse.IpconfigsEntry.value:type_name -> kni.IPConfig
+	20, // 41: kni.QueryPodNetworkResponse.IpconfigsEntry.value:type_name -> kni.IPConfig
+	12, // 42: kni.KNI.CreateIsolationDomain:input_type -> kni.CreateIsolationDomainRequest
+	14, // 43: kni.KNI.DeleteIsolationDomain:input_type -> kni.DeleteIsolationDomainRequest
+	16, // 44: kni.KNI.AttachInterface:input_type -> kni.AttachInterfaceRequest
+	18, // 45: kni.KNI.DetachInterface:input_type -> kni.DetachInterfaceRequest
+	29, // 46: kni.KNI.QueryPodNetwork:input_type -> kni.QueryPodNetworkRequest
+	25, // 47: kni.KNI.QueryNodeNetworks:input_type -> kni.QueryNodeNetworksRequest
+	27, // 48: kni.KNI.SetupNodeNetwork:input_type -> kni.SetupNodeNetworkRequest
+	1,  // 49: kni.KNIX.PostAttachInterface:input_type -> kni.PostAttachInterfaceRequest
+	2,  // 50: kni.KNIX.ListPods:input_type -> kni.ListPodsRequest
+	7,  // 51: kni.KNIXPluginManager.RegisterPlugin:input_type -> kni.RegisterPluginRequest
+	9,  // 52: kni.KNIXPluginManager.DeregisterPlugin:input_type -> kni.DeregisterPluginRequest
+	5,  // 53: kni.KNIXPluginManager.ListPlugins:input_type -> kni.ListPluginsRequest
+	13, // 54: kni.KNI.CreateIsolationDomain:output_type -> kni.CreateIsolationDomainResponse
+	15, // 55: kni.KNI.DeleteIsolationDomain:output_type -> kni.DeleteIsolationDomainResponse
+	17, // 56: kni.KNI.AttachInterface:output_type -> kni.AttachInterfaceResponse
+	19, // 57: kni.KNI.DetachInterface:output_type -> kni.DetachInterfaceResponse
+	30, // 58: kni.KNI.QueryPodNetwork:output_type -> kni.QueryPodNetworkResponse
+	26, // 59: kni.KNI.QueryNodeNetworks:output_type -> kni.QueryNodeNetworksResponse
+	28, // 60: kni.KNI.SetupNodeNetwork:output_type -> kni.SetupNodeNetworkResponse
+	11, // 61: kni.KNIX.PostAttachInterface:output_type -> kni.PostAttachInterfaceResponse
+	4,  // 62: kni.KNIX.ListPods:output_type -> kni.ListPodsResponse
+	8,  // 63: kni.KNIXPluginManager.RegisterPlugin:output_type -> kni.RegisterPluginResponse
+	10, // 64: kni.KNIXPluginManager.DeregisterPlugin:output_type -> kni.DeregisterPluginResponse
+	6,  // 65: kni.KNIXPluginManager.ListPlugins:output_type -> kni.ListPluginsResponse
+	54, // [54:66] is the sub-list for method output_type
+	42, // [42:54] is the sub-list for method input_type
+	42, // [42:42] is the sub-list for extension type_name
+	42, // [42:42] is the sub-list for extension extendee
+	0,  // [0:42] is the sub-list for field type_name
 }
 
 func init() { file_pkg_apis_runtime_beta_api_proto_init() }
@@ -1664,7 +2440,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateNetworkRequest); i {
+			switch v := v.(*PostAttachInterfaceRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1676,7 +2452,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateNetworkResponse); i {
+			switch v := v.(*ListPodsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1688,7 +2464,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteNetworkRequest); i {
+			switch v := v.(*Pod); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1700,7 +2476,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteNetworkResponse); i {
+			switch v := v.(*ListPodsResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1712,7 +2488,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AttachInterfaceRequest); i {
+			switch v := v.(*ListPluginsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1724,7 +2500,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AttachInterfaceResponse); i {
+			switch v := v.(*ListPluginsResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1736,7 +2512,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DetachInterfaceRequest); i {
+			switch v := v.(*RegisterPluginRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1748,7 +2524,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DetachInterfaceResponse); i {
+			switch v := v.(*RegisterPluginResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1760,7 +2536,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*IPConfig); i {
+			switch v := v.(*DeregisterPluginRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1772,7 +2548,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Network); i {
+			switch v := v.(*DeregisterPluginResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1784,7 +2560,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Isolation); i {
+			switch v := v.(*PostAttachInterfaceResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1796,7 +2572,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DNSConfig); i {
+			switch v := v.(*CreateIsolationDomainRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1808,7 +2584,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PortMapping); i {
+			switch v := v.(*CreateIsolationDomainResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1820,7 +2596,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryNodeNetworksRequest); i {
+			switch v := v.(*DeleteIsolationDomainRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1832,7 +2608,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryNodeNetworksResponse); i {
+			switch v := v.(*DeleteIsolationDomainResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1844,7 +2620,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetupNodeNetworkRequest); i {
+			switch v := v.(*AttachInterfaceRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1856,7 +2632,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetupNodeNetworkResponse); i {
+			switch v := v.(*AttachInterfaceResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1868,7 +2644,7 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryPodNetworkRequest); i {
+			switch v := v.(*DetachInterfaceRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1880,6 +2656,138 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			}
 		}
 		file_pkg_apis_runtime_beta_api_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DetachInterfaceResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_apis_runtime_beta_api_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IPConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_apis_runtime_beta_api_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Network); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_apis_runtime_beta_api_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Isolation); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_apis_runtime_beta_api_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DNSConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_apis_runtime_beta_api_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PortMapping); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_apis_runtime_beta_api_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QueryNodeNetworksRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_apis_runtime_beta_api_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QueryNodeNetworksResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_apis_runtime_beta_api_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetupNodeNetworkRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_apis_runtime_beta_api_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetupNodeNetworkResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_apis_runtime_beta_api_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QueryPodNetworkRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_apis_runtime_beta_api_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*QueryPodNetworkResponse); i {
 			case 0:
 				return &v.state
@@ -1898,9 +2806,9 @@ func file_pkg_apis_runtime_beta_api_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_pkg_apis_runtime_beta_api_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   38,
+			NumMessages:   60,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   3,
 		},
 		GoTypes:           file_pkg_apis_runtime_beta_api_proto_goTypes,
 		DependencyIndexes: file_pkg_apis_runtime_beta_api_proto_depIdxs,

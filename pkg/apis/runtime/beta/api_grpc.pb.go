@@ -19,26 +19,26 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	KNI_CreateNetwork_FullMethodName     = "/kni.KNI/CreateNetwork"
-	KNI_DeleteNetwork_FullMethodName     = "/kni.KNI/DeleteNetwork"
-	KNI_AttachInterface_FullMethodName   = "/kni.KNI/AttachInterface"
-	KNI_DetachInterface_FullMethodName   = "/kni.KNI/DetachInterface"
-	KNI_QueryPodNetwork_FullMethodName   = "/kni.KNI/QueryPodNetwork"
-	KNI_SetupNodeNetwork_FullMethodName  = "/kni.KNI/SetupNodeNetwork"
-	KNI_QueryNodeNetworks_FullMethodName = "/kni.KNI/QueryNodeNetworks"
+	KNI_CreateIsolationDomain_FullMethodName = "/kni.KNI/CreateIsolationDomain"
+	KNI_DeleteIsolationDomain_FullMethodName = "/kni.KNI/DeleteIsolationDomain"
+	KNI_AttachInterface_FullMethodName       = "/kni.KNI/AttachInterface"
+	KNI_DetachInterface_FullMethodName       = "/kni.KNI/DetachInterface"
+	KNI_QueryPodNetwork_FullMethodName       = "/kni.KNI/QueryPodNetwork"
+	KNI_QueryNodeNetworks_FullMethodName     = "/kni.KNI/QueryNodeNetworks"
+	KNI_SetupNodeNetwork_FullMethodName      = "/kni.KNI/SetupNodeNetwork"
 )
 
 // KNIClient is the client API for KNI service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type KNIClient interface {
-	CreateNetwork(ctx context.Context, in *CreateNetworkRequest, opts ...grpc.CallOption) (*CreateNetworkResponse, error)
-	DeleteNetwork(ctx context.Context, in *DeleteNetworkRequest, opts ...grpc.CallOption) (*DeleteNetworkResponse, error)
+	CreateIsolationDomain(ctx context.Context, in *CreateIsolationDomainRequest, opts ...grpc.CallOption) (*CreateIsolationDomainResponse, error)
+	DeleteIsolationDomain(ctx context.Context, in *DeleteIsolationDomainRequest, opts ...grpc.CallOption) (*DeleteIsolationDomainResponse, error)
 	AttachInterface(ctx context.Context, in *AttachInterfaceRequest, opts ...grpc.CallOption) (*AttachInterfaceResponse, error)
 	DetachInterface(ctx context.Context, in *DetachInterfaceRequest, opts ...grpc.CallOption) (*DetachInterfaceResponse, error)
 	QueryPodNetwork(ctx context.Context, in *QueryPodNetworkRequest, opts ...grpc.CallOption) (*QueryPodNetworkResponse, error)
-	SetupNodeNetwork(ctx context.Context, in *SetupNodeNetworkRequest, opts ...grpc.CallOption) (*SetupNodeNetworkResponse, error)
 	QueryNodeNetworks(ctx context.Context, in *QueryNodeNetworksRequest, opts ...grpc.CallOption) (*QueryNodeNetworksResponse, error)
+	SetupNodeNetwork(ctx context.Context, in *SetupNodeNetworkRequest, opts ...grpc.CallOption) (*SetupNodeNetworkResponse, error)
 }
 
 type kNIClient struct {
@@ -49,18 +49,18 @@ func NewKNIClient(cc grpc.ClientConnInterface) KNIClient {
 	return &kNIClient{cc}
 }
 
-func (c *kNIClient) CreateNetwork(ctx context.Context, in *CreateNetworkRequest, opts ...grpc.CallOption) (*CreateNetworkResponse, error) {
-	out := new(CreateNetworkResponse)
-	err := c.cc.Invoke(ctx, KNI_CreateNetwork_FullMethodName, in, out, opts...)
+func (c *kNIClient) CreateIsolationDomain(ctx context.Context, in *CreateIsolationDomainRequest, opts ...grpc.CallOption) (*CreateIsolationDomainResponse, error) {
+	out := new(CreateIsolationDomainResponse)
+	err := c.cc.Invoke(ctx, KNI_CreateIsolationDomain_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *kNIClient) DeleteNetwork(ctx context.Context, in *DeleteNetworkRequest, opts ...grpc.CallOption) (*DeleteNetworkResponse, error) {
-	out := new(DeleteNetworkResponse)
-	err := c.cc.Invoke(ctx, KNI_DeleteNetwork_FullMethodName, in, out, opts...)
+func (c *kNIClient) DeleteIsolationDomain(ctx context.Context, in *DeleteIsolationDomainRequest, opts ...grpc.CallOption) (*DeleteIsolationDomainResponse, error) {
+	out := new(DeleteIsolationDomainResponse)
+	err := c.cc.Invoke(ctx, KNI_DeleteIsolationDomain_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -94,18 +94,18 @@ func (c *kNIClient) QueryPodNetwork(ctx context.Context, in *QueryPodNetworkRequ
 	return out, nil
 }
 
-func (c *kNIClient) SetupNodeNetwork(ctx context.Context, in *SetupNodeNetworkRequest, opts ...grpc.CallOption) (*SetupNodeNetworkResponse, error) {
-	out := new(SetupNodeNetworkResponse)
-	err := c.cc.Invoke(ctx, KNI_SetupNodeNetwork_FullMethodName, in, out, opts...)
+func (c *kNIClient) QueryNodeNetworks(ctx context.Context, in *QueryNodeNetworksRequest, opts ...grpc.CallOption) (*QueryNodeNetworksResponse, error) {
+	out := new(QueryNodeNetworksResponse)
+	err := c.cc.Invoke(ctx, KNI_QueryNodeNetworks_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *kNIClient) QueryNodeNetworks(ctx context.Context, in *QueryNodeNetworksRequest, opts ...grpc.CallOption) (*QueryNodeNetworksResponse, error) {
-	out := new(QueryNodeNetworksResponse)
-	err := c.cc.Invoke(ctx, KNI_QueryNodeNetworks_FullMethodName, in, out, opts...)
+func (c *kNIClient) SetupNodeNetwork(ctx context.Context, in *SetupNodeNetworkRequest, opts ...grpc.CallOption) (*SetupNodeNetworkResponse, error) {
+	out := new(SetupNodeNetworkResponse)
+	err := c.cc.Invoke(ctx, KNI_SetupNodeNetwork_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -116,24 +116,24 @@ func (c *kNIClient) QueryNodeNetworks(ctx context.Context, in *QueryNodeNetworks
 // All implementations should embed UnimplementedKNIServer
 // for forward compatibility
 type KNIServer interface {
-	CreateNetwork(context.Context, *CreateNetworkRequest) (*CreateNetworkResponse, error)
-	DeleteNetwork(context.Context, *DeleteNetworkRequest) (*DeleteNetworkResponse, error)
+	CreateIsolationDomain(context.Context, *CreateIsolationDomainRequest) (*CreateIsolationDomainResponse, error)
+	DeleteIsolationDomain(context.Context, *DeleteIsolationDomainRequest) (*DeleteIsolationDomainResponse, error)
 	AttachInterface(context.Context, *AttachInterfaceRequest) (*AttachInterfaceResponse, error)
 	DetachInterface(context.Context, *DetachInterfaceRequest) (*DetachInterfaceResponse, error)
 	QueryPodNetwork(context.Context, *QueryPodNetworkRequest) (*QueryPodNetworkResponse, error)
-	SetupNodeNetwork(context.Context, *SetupNodeNetworkRequest) (*SetupNodeNetworkResponse, error)
 	QueryNodeNetworks(context.Context, *QueryNodeNetworksRequest) (*QueryNodeNetworksResponse, error)
+	SetupNodeNetwork(context.Context, *SetupNodeNetworkRequest) (*SetupNodeNetworkResponse, error)
 }
 
 // UnimplementedKNIServer should be embedded to have forward compatible implementations.
 type UnimplementedKNIServer struct {
 }
 
-func (UnimplementedKNIServer) CreateNetwork(context.Context, *CreateNetworkRequest) (*CreateNetworkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateNetwork not implemented")
+func (UnimplementedKNIServer) CreateIsolationDomain(context.Context, *CreateIsolationDomainRequest) (*CreateIsolationDomainResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateIsolationDomain not implemented")
 }
-func (UnimplementedKNIServer) DeleteNetwork(context.Context, *DeleteNetworkRequest) (*DeleteNetworkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteNetwork not implemented")
+func (UnimplementedKNIServer) DeleteIsolationDomain(context.Context, *DeleteIsolationDomainRequest) (*DeleteIsolationDomainResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteIsolationDomain not implemented")
 }
 func (UnimplementedKNIServer) AttachInterface(context.Context, *AttachInterfaceRequest) (*AttachInterfaceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AttachInterface not implemented")
@@ -144,11 +144,11 @@ func (UnimplementedKNIServer) DetachInterface(context.Context, *DetachInterfaceR
 func (UnimplementedKNIServer) QueryPodNetwork(context.Context, *QueryPodNetworkRequest) (*QueryPodNetworkResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method QueryPodNetwork not implemented")
 }
-func (UnimplementedKNIServer) SetupNodeNetwork(context.Context, *SetupNodeNetworkRequest) (*SetupNodeNetworkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetupNodeNetwork not implemented")
-}
 func (UnimplementedKNIServer) QueryNodeNetworks(context.Context, *QueryNodeNetworksRequest) (*QueryNodeNetworksResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method QueryNodeNetworks not implemented")
+}
+func (UnimplementedKNIServer) SetupNodeNetwork(context.Context, *SetupNodeNetworkRequest) (*SetupNodeNetworkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetupNodeNetwork not implemented")
 }
 
 // UnsafeKNIServer may be embedded to opt out of forward compatibility for this service.
@@ -162,38 +162,38 @@ func RegisterKNIServer(s grpc.ServiceRegistrar, srv KNIServer) {
 	s.RegisterService(&KNI_ServiceDesc, srv)
 }
 
-func _KNI_CreateNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateNetworkRequest)
+func _KNI_CreateIsolationDomain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateIsolationDomainRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(KNIServer).CreateNetwork(ctx, in)
+		return srv.(KNIServer).CreateIsolationDomain(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: KNI_CreateNetwork_FullMethodName,
+		FullMethod: KNI_CreateIsolationDomain_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(KNIServer).CreateNetwork(ctx, req.(*CreateNetworkRequest))
+		return srv.(KNIServer).CreateIsolationDomain(ctx, req.(*CreateIsolationDomainRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _KNI_DeleteNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteNetworkRequest)
+func _KNI_DeleteIsolationDomain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteIsolationDomainRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(KNIServer).DeleteNetwork(ctx, in)
+		return srv.(KNIServer).DeleteIsolationDomain(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: KNI_DeleteNetwork_FullMethodName,
+		FullMethod: KNI_DeleteIsolationDomain_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(KNIServer).DeleteNetwork(ctx, req.(*DeleteNetworkRequest))
+		return srv.(KNIServer).DeleteIsolationDomain(ctx, req.(*DeleteIsolationDomainRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -252,24 +252,6 @@ func _KNI_QueryPodNetwork_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _KNI_SetupNodeNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetupNodeNetworkRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(KNIServer).SetupNodeNetwork(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: KNI_SetupNodeNetwork_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(KNIServer).SetupNodeNetwork(ctx, req.(*SetupNodeNetworkRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _KNI_QueryNodeNetworks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(QueryNodeNetworksRequest)
 	if err := dec(in); err != nil {
@@ -288,6 +270,24 @@ func _KNI_QueryNodeNetworks_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _KNI_SetupNodeNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetupNodeNetworkRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KNIServer).SetupNodeNetwork(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KNI_SetupNodeNetwork_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KNIServer).SetupNodeNetwork(ctx, req.(*SetupNodeNetworkRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // KNI_ServiceDesc is the grpc.ServiceDesc for KNI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -296,12 +296,12 @@ var KNI_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*KNIServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateNetwork",
-			Handler:    _KNI_CreateNetwork_Handler,
+			MethodName: "CreateIsolationDomain",
+			Handler:    _KNI_CreateIsolationDomain_Handler,
 		},
 		{
-			MethodName: "DeleteNetwork",
-			Handler:    _KNI_DeleteNetwork_Handler,
+			MethodName: "DeleteIsolationDomain",
+			Handler:    _KNI_DeleteIsolationDomain_Handler,
 		},
 		{
 			MethodName: "AttachInterface",
@@ -316,12 +316,299 @@ var KNI_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _KNI_QueryPodNetwork_Handler,
 		},
 		{
+			MethodName: "QueryNodeNetworks",
+			Handler:    _KNI_QueryNodeNetworks_Handler,
+		},
+		{
 			MethodName: "SetupNodeNetwork",
 			Handler:    _KNI_SetupNodeNetwork_Handler,
 		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "pkg/apis/runtime/beta/api.proto",
+}
+
+const (
+	KNIX_PostAttachInterface_FullMethodName = "/kni.KNIX/PostAttachInterface"
+	KNIX_ListPods_FullMethodName            = "/kni.KNIX/ListPods"
+)
+
+// KNIXClient is the client API for KNIX service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type KNIXClient interface {
+	PostAttachInterface(ctx context.Context, in *PostAttachInterfaceRequest, opts ...grpc.CallOption) (*PostAttachInterfaceResponse, error)
+	ListPods(ctx context.Context, in *ListPodsRequest, opts ...grpc.CallOption) (*ListPodsResponse, error)
+}
+
+type kNIXClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewKNIXClient(cc grpc.ClientConnInterface) KNIXClient {
+	return &kNIXClient{cc}
+}
+
+func (c *kNIXClient) PostAttachInterface(ctx context.Context, in *PostAttachInterfaceRequest, opts ...grpc.CallOption) (*PostAttachInterfaceResponse, error) {
+	out := new(PostAttachInterfaceResponse)
+	err := c.cc.Invoke(ctx, KNIX_PostAttachInterface_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kNIXClient) ListPods(ctx context.Context, in *ListPodsRequest, opts ...grpc.CallOption) (*ListPodsResponse, error) {
+	out := new(ListPodsResponse)
+	err := c.cc.Invoke(ctx, KNIX_ListPods_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// KNIXServer is the server API for KNIX service.
+// All implementations should embed UnimplementedKNIXServer
+// for forward compatibility
+type KNIXServer interface {
+	PostAttachInterface(context.Context, *PostAttachInterfaceRequest) (*PostAttachInterfaceResponse, error)
+	ListPods(context.Context, *ListPodsRequest) (*ListPodsResponse, error)
+}
+
+// UnimplementedKNIXServer should be embedded to have forward compatible implementations.
+type UnimplementedKNIXServer struct {
+}
+
+func (UnimplementedKNIXServer) PostAttachInterface(context.Context, *PostAttachInterfaceRequest) (*PostAttachInterfaceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PostAttachInterface not implemented")
+}
+func (UnimplementedKNIXServer) ListPods(context.Context, *ListPodsRequest) (*ListPodsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPods not implemented")
+}
+
+// UnsafeKNIXServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KNIXServer will
+// result in compilation errors.
+type UnsafeKNIXServer interface {
+	mustEmbedUnimplementedKNIXServer()
+}
+
+func RegisterKNIXServer(s grpc.ServiceRegistrar, srv KNIXServer) {
+	s.RegisterService(&KNIX_ServiceDesc, srv)
+}
+
+func _KNIX_PostAttachInterface_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PostAttachInterfaceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KNIXServer).PostAttachInterface(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KNIX_PostAttachInterface_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KNIXServer).PostAttachInterface(ctx, req.(*PostAttachInterfaceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KNIX_ListPods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListPodsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KNIXServer).ListPods(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KNIX_ListPods_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KNIXServer).ListPods(ctx, req.(*ListPodsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// KNIX_ServiceDesc is the grpc.ServiceDesc for KNIX service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var KNIX_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kni.KNIX",
+	HandlerType: (*KNIXServer)(nil),
+	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "QueryNodeNetworks",
-			Handler:    _KNI_QueryNodeNetworks_Handler,
+			MethodName: "PostAttachInterface",
+			Handler:    _KNIX_PostAttachInterface_Handler,
+		},
+		{
+			MethodName: "ListPods",
+			Handler:    _KNIX_ListPods_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "pkg/apis/runtime/beta/api.proto",
+}
+
+const (
+	KNIXPluginManager_RegisterPlugin_FullMethodName   = "/kni.KNIXPluginManager/RegisterPlugin"
+	KNIXPluginManager_DeregisterPlugin_FullMethodName = "/kni.KNIXPluginManager/DeregisterPlugin"
+	KNIXPluginManager_ListPlugins_FullMethodName      = "/kni.KNIXPluginManager/ListPlugins"
+)
+
+// KNIXPluginManagerClient is the client API for KNIXPluginManager service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type KNIXPluginManagerClient interface {
+	RegisterPlugin(ctx context.Context, in *RegisterPluginRequest, opts ...grpc.CallOption) (*RegisterPluginResponse, error)
+	DeregisterPlugin(ctx context.Context, in *DeregisterPluginRequest, opts ...grpc.CallOption) (*DeregisterPluginResponse, error)
+	ListPlugins(ctx context.Context, in *ListPluginsRequest, opts ...grpc.CallOption) (*ListPluginsResponse, error)
+}
+
+type kNIXPluginManagerClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewKNIXPluginManagerClient(cc grpc.ClientConnInterface) KNIXPluginManagerClient {
+	return &kNIXPluginManagerClient{cc}
+}
+
+func (c *kNIXPluginManagerClient) RegisterPlugin(ctx context.Context, in *RegisterPluginRequest, opts ...grpc.CallOption) (*RegisterPluginResponse, error) {
+	out := new(RegisterPluginResponse)
+	err := c.cc.Invoke(ctx, KNIXPluginManager_RegisterPlugin_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kNIXPluginManagerClient) DeregisterPlugin(ctx context.Context, in *DeregisterPluginRequest, opts ...grpc.CallOption) (*DeregisterPluginResponse, error) {
+	out := new(DeregisterPluginResponse)
+	err := c.cc.Invoke(ctx, KNIXPluginManager_DeregisterPlugin_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kNIXPluginManagerClient) ListPlugins(ctx context.Context, in *ListPluginsRequest, opts ...grpc.CallOption) (*ListPluginsResponse, error) {
+	out := new(ListPluginsResponse)
+	err := c.cc.Invoke(ctx, KNIXPluginManager_ListPlugins_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// KNIXPluginManagerServer is the server API for KNIXPluginManager service.
+// All implementations should embed UnimplementedKNIXPluginManagerServer
+// for forward compatibility
+type KNIXPluginManagerServer interface {
+	RegisterPlugin(context.Context, *RegisterPluginRequest) (*RegisterPluginResponse, error)
+	DeregisterPlugin(context.Context, *DeregisterPluginRequest) (*DeregisterPluginResponse, error)
+	ListPlugins(context.Context, *ListPluginsRequest) (*ListPluginsResponse, error)
+}
+
+// UnimplementedKNIXPluginManagerServer should be embedded to have forward compatible implementations.
+type UnimplementedKNIXPluginManagerServer struct {
+}
+
+func (UnimplementedKNIXPluginManagerServer) RegisterPlugin(context.Context, *RegisterPluginRequest) (*RegisterPluginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterPlugin not implemented")
+}
+func (UnimplementedKNIXPluginManagerServer) DeregisterPlugin(context.Context, *DeregisterPluginRequest) (*DeregisterPluginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeregisterPlugin not implemented")
+}
+func (UnimplementedKNIXPluginManagerServer) ListPlugins(context.Context, *ListPluginsRequest) (*ListPluginsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPlugins not implemented")
+}
+
+// UnsafeKNIXPluginManagerServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KNIXPluginManagerServer will
+// result in compilation errors.
+type UnsafeKNIXPluginManagerServer interface {
+	mustEmbedUnimplementedKNIXPluginManagerServer()
+}
+
+func RegisterKNIXPluginManagerServer(s grpc.ServiceRegistrar, srv KNIXPluginManagerServer) {
+	s.RegisterService(&KNIXPluginManager_ServiceDesc, srv)
+}
+
+func _KNIXPluginManager_RegisterPlugin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterPluginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KNIXPluginManagerServer).RegisterPlugin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KNIXPluginManager_RegisterPlugin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KNIXPluginManagerServer).RegisterPlugin(ctx, req.(*RegisterPluginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KNIXPluginManager_DeregisterPlugin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeregisterPluginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KNIXPluginManagerServer).DeregisterPlugin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KNIXPluginManager_DeregisterPlugin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KNIXPluginManagerServer).DeregisterPlugin(ctx, req.(*DeregisterPluginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KNIXPluginManager_ListPlugins_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListPluginsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KNIXPluginManagerServer).ListPlugins(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KNIXPluginManager_ListPlugins_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KNIXPluginManagerServer).ListPlugins(ctx, req.(*ListPluginsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// KNIXPluginManager_ServiceDesc is the grpc.ServiceDesc for KNIXPluginManager service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var KNIXPluginManager_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kni.KNIXPluginManager",
+	HandlerType: (*KNIXPluginManagerServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "RegisterPlugin",
+			Handler:    _KNIXPluginManager_RegisterPlugin_Handler,
+		},
+		{
+			MethodName: "DeregisterPlugin",
+			Handler:    _KNIXPluginManager_DeregisterPlugin_Handler,
+		},
+		{
+			MethodName: "ListPlugins",
+			Handler:    _KNIXPluginManager_ListPlugins_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

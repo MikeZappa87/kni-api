@@ -4,16 +4,87 @@ package kni;
 option go_package = "pkg/apis/runtime/beta";
 
 service KNI {
-    rpc CreateNetwork(CreateNetworkRequest) returns (CreateNetworkResponse) {} //MVP
-    rpc DeleteNetwork(DeleteNetworkRequest) returns (DeleteNetworkResponse) {} //MVP
+    rpc CreateIsolationDomain(CreateIsolationDomainRequest) returns (CreateIsolationDomainResponse) {} //MVP
+    rpc DeleteIsolationDomain(DeleteIsolationDomainRequest) returns (DeleteIsolationDomainResponse) {} //MVP
     rpc AttachInterface(AttachInterfaceRequest) returns (AttachInterfaceResponse) {} //MVP
     rpc DetachInterface(DetachInterfaceRequest) returns (DetachInterfaceResponse) {} //MVP
     rpc QueryPodNetwork(QueryPodNetworkRequest) returns (QueryPodNetworkResponse) {} //MVP
-    rpc SetupNodeNetwork(SetupNodeNetworkRequest) returns (SetupNodeNetworkResponse) {}
     rpc QueryNodeNetworks(QueryNodeNetworksRequest) returns (QueryNodeNetworksResponse) {}
+    rpc SetupNodeNetwork(SetupNodeNetworkRequest) returns (SetupNodeNetworkResponse) {}
 }
 
-message CreateNetworkRequest {
+// We need to provide an additional service to register/deregister Xtensions
+service KNIX {
+    rpc PostAttachInterface(PostAttachInterfaceRequest) returns (PostAttachInterfaceResponse) {}
+    rpc ListPods(ListPodsRequest) returns (ListPodsResponse) {}
+}
+
+service KNIXPluginManager {
+    rpc RegisterPlugin(RegisterPluginRequest) returns (RegisterPluginResponse) {}
+    rpc DeregisterPlugin(DeregisterPluginRequest) returns (DeregisterPluginResponse) {}
+    rpc ListPlugins(ListPluginsRequest) returns (ListPluginsResponse) {}
+}
+
+message PostAttachInterfaceRequest {
+    string name = 1;
+    string uid = 2;
+    string namespace = 3;
+    map<string,string> labels = 5;
+    map<string,string> annotations = 6;
+    map<string,string> extradata = 7;
+    map<string, IPConfig> prev_ipconfigs = 8;
+    string netns_path = 9;
+}
+
+message ListPodsRequest {
+    
+}
+
+message Pod {
+    string name = 1;
+    string uid = 2;
+    string namespace = 3;
+    map<string,string> labels = 5;
+    map<string,string> annotations = 6;
+    map<string,string> extradata = 7;
+    map<string, IPConfig> ipconfigs = 8;
+    string netns_path = 9;
+}
+
+message ListPodsResponse {
+    map<string, Pod> pods = 1;
+}
+
+message ListPluginsRequest {
+
+}
+
+message ListPluginsResponse {
+
+}
+
+message RegisterPluginRequest {
+
+}
+
+message RegisterPluginResponse {
+    
+}
+
+message DeregisterPluginRequest {
+
+}
+
+message DeregisterPluginResponse {
+    
+}
+
+message PostAttachInterfaceResponse {
+    map<string, IPConfig> ipconfigs = 1;
+    map<string,string> extradata = 2;
+}
+
+message CreateIsolationDomainRequest {
     string name = 1;
     string uid = 2;
     string namespace = 3;
@@ -23,12 +94,12 @@ message CreateNetworkRequest {
     map<string,string> extradata = 7;
 }
 
-message CreateNetworkResponse {
+message CreateIsolationDomainResponse {
     string netns_path = 1;
     map<string,string> extradata = 2;
 }
 
-message DeleteNetworkRequest {
+message DeleteIsolationDomainRequest {
     string id = 1;
     string name = 2;
     string namespace = 3;
@@ -36,7 +107,7 @@ message DeleteNetworkRequest {
     map<string,string> extradata = 5;
 }
 
-message DeleteNetworkResponse {
+message DeleteIsolationDomainResponse {
 
 }
 
@@ -143,4 +214,12 @@ message QueryPodNetworkRequest {
 message QueryPodNetworkResponse {
     map<string, IPConfig> ipconfigs = 1;
     map<string,string> extradata = 2;
+}
+
+message PodMeta {
+    string name = 1;
+    string uid = 2;
+    string namespace = 3;
+    map<string,string> labels = 5;
+    map<string,string> annotations = 6;
 }
