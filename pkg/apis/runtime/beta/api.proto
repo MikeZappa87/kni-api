@@ -16,7 +16,6 @@ service KNI {
 // We need to provide an additional service to register/deregister Xtensions
 service KNIX {
     rpc PostAttachInterface(PostAttachInterfaceRequest) returns (PostAttachInterfaceResponse) {}
-    rpc ListPods(ListPodsRequest) returns (ListPodsResponse) {}
 }
 
 service KNIXPluginManager {
@@ -34,25 +33,6 @@ message PostAttachInterfaceRequest {
     map<string,string> extradata = 7;
     map<string, IPConfig> prev_ipconfigs = 8;
     string netns_path = 9;
-}
-
-message ListPodsRequest {
-    
-}
-
-message Pod {
-    string name = 1;
-    string uid = 2;
-    string namespace = 3;
-    map<string,string> labels = 5;
-    map<string,string> annotations = 6;
-    map<string,string> extradata = 7;
-    map<string, IPConfig> ipconfigs = 8;
-    string netns_path = 9;
-}
-
-message ListPodsResponse {
-    map<string, Pod> pods = 1;
 }
 
 message ListPluginsRequest {
